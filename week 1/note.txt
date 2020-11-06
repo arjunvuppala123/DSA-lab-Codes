@@ -1,0 +1,1 @@
+Below program returns the true position of the key in the array as per the example illustrated in the specification for Data Structures Lab1: Implement Sequential Search (pdf file)
