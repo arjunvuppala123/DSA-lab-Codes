@@ -16,37 +16,28 @@ Node * createExpressionTree(char* a,int len)
       ch=a[i];
       temp_node=(Node *)(malloc(sizeof(Node)));    
       temp_node->left=temp_node->right=NULL;
-      temp_node->data = ch;
-        
+      temp_node->data = ch;  
       if(ch=='+' || ch=='-' || ch=='*' || ch=='/')
       {
-        printf("OK1\n");
         temp_node->right=stack[top];
-        printf("OK2\n");
         top--;
-        printf("OK3\n");
         temp_node->left=stack[top];
-        printf("OK3\n");
         top--;
-        printf("OK3\n");
-        if(top!=100){
-          printf("OK3\n");
-          stack[++top]->data = *a;
-          printf("OK3\n");
-          printf("%c",stack[top]->data);
-          printf("OK3\n");
+        if(top<len){
+          temp_node->data = a[i];
+          stack[++top] = temp_node;
           }
       }    
 
     else{
-        if(top!=100){
+        if(top < len){
           top = top + 1;
-          stack[top]->data= a;
+          stack[top] = temp_node;
         }
     }
       i++;     
     }
-    return(stack[--top]);
+    return(stack[top]);
 }
 
 
@@ -78,6 +69,7 @@ void postorder(Node *root)
 {
  //TODO 
  // Note : Do not change the printf
+ if(root != NULL)
     {
     postorder(root->left); 
     postorder(root->right);
